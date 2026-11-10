@@ -1,3 +1,5 @@
+import pytest
+
 from calc import add, divide, multiply, subtract
 
 
@@ -15,3 +17,13 @@ def test_multiply():
 
 def test_divide():
     assert divide(10, 4) == 2.5
+
+
+def test_divide_by_zero():
+    with pytest.raises(ValueError, match="cannot divide by zero"):
+        divide(1, 0)
+
+
+def test_divide_by_float_zero():
+    with pytest.raises(ValueError, match="cannot divide by zero"):
+        divide(1, 0.0)
